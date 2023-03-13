@@ -1,0 +1,11 @@
+tasks:
+  Robot Orders:
+    robotTaskName: Robot Orders
+condaConfigFile: conda.yaml
+ignoreFiles:
+- .gitignore
+artifactsDir: output
+PATH:
+- .
+PYTHONPATH:
+- .

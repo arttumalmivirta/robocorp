@@ -1,0 +1,44 @@
+{
+    "Address": {
+        "screenshot": ".images\\address-screenshot.png",
+        "source": "https://robotsparebinindustries.com/#/robot-order",
+        "strategy": "id",
+        "type": "browser",
+        "value": "address"
+    },
+    "Btnsecondarynthchild1": {
+        "screenshot": ".images\\btnsecondarynthchild1-screenshot.png",
+        "source": "https://robotsparebinindustries.com/#/robot-order",
+        "strategy": "css",
+        "type": "browser",
+        "value": ".btn-secondary:nth-child(1)"
+    },
+    "Head": {
+        "screenshot": ".images\\head-screenshot.png",
+        "source": "https://robotsparebinindustries.com/#/robot-order",
+        "strategy": "id",
+        "type": "browser",
+        "value": "head"
+    },
+    "Htmlbodydivdivdiv1divdiv1formdiv3input": {
+        "screenshot": ".images\\htmlbodydivdivdiv1divdiv1formdiv3input-screenshot.png",
+        "source": "https://robotsparebinindustries.com/#/robot-order",
+        "strategy": "xpath",
+        "type": "browser",
+        "value": "/html/body/div/div/div[1]/div/div[1]/form/div[3]/input"
+    },
+    "Modalheader": {
+        "screenshot": ".images\\modalheader-screenshot.png",
+        "source": "https://robotsparebinindustries.com/#/robot-order",
+        "strategy": "css",
+        "type": "browser",
+        "value": ".modal-header"
+    },
+    "Radionthchild1": {
+        "screenshot": ".images\\radionthchild1-screenshot.png",
+        "source": "https://robotsparebinindustries.com/#/robot-order",
+        "strategy": "css",
+        "type": "browser",
+        "value": ".radio:nth-child(1)"
+    }
+}
