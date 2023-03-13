@@ -21,12 +21,9 @@ ${robotroot}            C:/Users/ArttuMalmivirta/OneDrive - Digital Workforce/Ro
 *** Tasks ***
 Robot Orders
     Launch Browser    ${robotordersurl}
-    ${pdffolder}=    Set Variable    ${robotroot}pdfs${/}
-    ${zippath}=    Set Variable    ${robotroot}zippedpdfs.zip
     Handle All Orders    ${orderscsvfilepath}    orderscsvurl=${ordersfileurl}    pdffolder=${pdffolder}
-    Archive Folder With Zip    ${pdffolder}    ${zippath}    ${FALSE}
-    Move File    ${zippath}    ${outputfolder}zippedpdfs.zip    ${TRUE}
-    [Teardown]    Close Browser
+    Archive Pdfs
+    Close Orders Browser
 
 
 *** Keywords ***
@@ -53,14 +50,8 @@ Read Model Name
     ${modelname}=    RPA.Browser.Selenium.Get Table Cell    id:model-info    ${partnumberint}    1
     RETURN    ${modelname}
 
-Test
-    [Arguments]    ${partnumber}=partnumber
-    ${partnumberint}=    Convert To Integer    ${partnumber}
-    ${partnumberint}=    Set Variable    ${${partnumberint}+1}
-    Log    ${partnumberint}
-
-Close Browser
-    RPA.Browser.Selenium.Close Browser
+Close Orders Browser
+    Close Browser
 
 Build Robot
     [Arguments]    ${headnumber}=headnumber    ${bodynumber}=bodynumber    ${legsnumber}=legsnumber    ${address}=address
@@ -103,6 +94,8 @@ Create Pdf
 
 Handle All Orders
     [Arguments]    ${csvfilepath}=csvfilepath    ${orderscsvurl}=orderscsvurl    ${pdffolder}=pdffolder
+    ${pdffolder}=    Set Variable    ${robotroot}pdfs${/}
+    ${zippath}=    Set Variable    ${robotroot}zippedpdfs.zip
     Download Orders File    ${orderscsvurl}    targetfilepath=${csvfilepath}
     ${orders}=    Read table from CSV    ${csvfilepath}    ${TRUE}
     Log    ${orders}
@@ -119,3 +112,9 @@ Handle All Orders
         Create Pdf    ${screenshotfilepath}    pdffilepath=${pdffilepath}
         Click Button    id:order-another
     END
+
+Archive Pdfs
+    ${pdffolder}=    Set Variable    ${robotroot}pdfs${/}
+    ${zippath}=    Set Variable    ${robotroot}zippedpdfs.zip
+    Archive Folder With Zip    ${pdffolder}    ${zippath}    ${FALSE}
+    Move File    ${zippath}    ${outputfolder}zippedpdfs.zip    ${TRUE}
